@@ -1,0 +1,2038 @@
+:root {
+  --bg: #0f0e0d;
+  --gr: #1a1918;
+  --of: #efeae2;
+  --mut: #a39d94;
+  --ac: #e2461f;
+  --ln: rgba(239, 234, 226, 0.12);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background: var(--bg);
+  color: var(--of);
+  font: 300 16px/1.6 Manrope, sans-serif;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+select {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   NAVEGAÇÃO
+========================================================= */
+
+.nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px 5vw;
+
+  border-bottom: 1px solid transparent;
+
+  transition:
+    background 0.5s,
+    padding 0.5s,
+    border-color 0.5s;
+}
+
+.nav:not(.solid) .logo,
+.nav:not(.solid) nav a {
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+}
+
+.nav:not(.solid) .pill {
+  background: transparent;
+}
+
+.nav.solid {
+  background: #141312;
+  border-bottom-color: var(--ln);
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--of);
+  text-decoration: none;
+
+  font: 600 15px/1 Manrope, sans-serif;
+}
+
+.logo small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--mut);
+  font-weight: 300;
+}
+
+.mark {
+  width: 26px;
+  height: 26px;
+
+  border: 1.5px solid var(--ac);
+  border-radius: 50% 50% 50% 0;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.nav nav {
+  display: flex;
+  gap: 34px;
+}
+
+.nav nav a {
+  color: var(--of);
+  text-decoration: none;
+
+  font-size: 13px;
+
+  opacity: 0.8;
+
+  transition: opacity 0.3s;
+}
+
+.nav nav a:hover {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   BOTÕES
+========================================================= */
+
+.pill,
+.cta {
+  display: inline-block;
+
+  border: 1px solid var(--ln);
+  background: rgba(15, 14, 13, 0.45);
+
+  color: var(--of);
+
+  padding: 11px 22px;
+  border-radius: 99px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+
+.pill:hover,
+.cta:hover {
+  background: var(--ac);
+  border-color: var(--ac);
+}
+
+.pill:focus-visible,
+.cta:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 3px;
+}
+
+.cta.pri,
+.cta.lg {
+  background: var(--ac);
+  border-color: var(--ac);
+}
+
+.cta.lg {
+  padding: 16px 32px;
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+.burger {
+  display: none;
+
+  position: relative;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  background: none;
+  border: 1px solid var(--ln);
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.burger i {
+  position: absolute;
+
+  left: 12px;
+  right: 12px;
+
+  height: 1.5px;
+
+  background: var(--of);
+
+  transition: 0.3s;
+}
+
+.burger i:first-child {
+  top: 16px;
+}
+
+.burger i:last-child {
+  top: 24px;
+}
+
+.nav.open .burger i:first-child {
+  top: 20px;
+  transform: rotate(45deg);
+}
+
+.nav.open .burger i:last-child {
+  top: 20px;
+  transform: rotate(-45deg);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+#hero {
+  height: 320vh;
+  background: var(--bg);
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+
+  height: 100vh;
+
+  overflow: hidden;
+
+  will-change: clip-path;
+}
+
+#cv {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.shade {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(15, 14, 13, 0.7),
+      rgba(15, 14, 13, 0) 60%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(15, 14, 13, 0.6),
+      transparent 40%
+    );
+}
+
+
+/* =========================================================
+   HERO CONTEÚDO
+========================================================= */
+
+.ui {
+  position: absolute;
+  inset: 0;
+
+  padding: 0 5vw 9vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+h1 {
+  font:
+    300 clamp(40px, 5.6vw, 84px) / 1.02
+    "Cormorant Garamond",
+    serif;
+
+  letter-spacing: 0.01em;
+
+  will-change: transform, opacity;
+}
+
+h1 b {
+  font-weight: 600;
+}
+
+.sub {
+  max-width: 30em;
+
+  margin-top: 22px;
+
+  font-size: clamp(15px, 1.3vw, 18px);
+
+  color: var(--of);
+
+  opacity: 0.88;
+}
+
+.tag {
+  margin: 18px 0 26px;
+
+  font-size: 12px;
+  letter-spacing: 0.18em;
+
+  color: var(--mut);
+
+  text-transform: uppercase;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.scroll {
+  position: absolute;
+
+  right: 5vw;
+  bottom: 9vh;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: var(--mut);
+
+  font-size: 11px;
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.scroll i {
+  width: 1px;
+  height: 46px;
+
+  background:
+    linear-gradient(
+      var(--ac),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   SEÇÕES
+========================================================= */
+
+section {
+  scroll-margin-top: 64px;
+}
+
+.sec {
+  padding: 11vh 6vw;
+
+  border-top: 1px solid var(--ln);
+}
+
+.lbl {
+  margin-bottom: 28px;
+
+  color: var(--ac);
+
+  font-size: 12px;
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+.lbl::before {
+  counter-increment: none;
+}
+
+
+/* =========================================================
+   SOBRE
+========================================================= */
+
+#sobre {
+  display: grid;
+
+  grid-template-columns: 1fr 1.1fr;
+
+  gap: 6vw;
+
+  align-items: center;
+
+  padding: 14vh 6vw;
+
+  border-top: 1px solid var(--ln);
+
+  min-height: 0;
+}
+
+#sobre .left {
+  min-width: 0;
+}
+
+h2 {
+  max-width: 12em;
+
+  font:
+    300 clamp(34px, 4vw, 60px) / 1.08
+    "Cormorant Garamond",
+    serif;
+}
+
+.txt {
+  max-width: 30em;
+
+  margin: 28px 0 44px;
+
+  color: var(--mut);
+}
+
+.micro {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+.micro div {
+  padding: 18px;
+
+  background: var(--gr);
+
+  border: 1px solid var(--ln);
+  border-radius: 14px;
+}
+
+.micro span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.micro p {
+  color: var(--mut);
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.quote {
+  max-width: 24em;
+
+  margin-top: 36px;
+  padding-top: 22px;
+
+  border-top: 1px solid var(--ln);
+
+  font:
+    italic 300 22px / 1.4
+    "Cormorant Garamond",
+    serif;
+}
+
+
+/* =========================================================
+   IMAGEM SOBRE
+========================================================= */
+
+.right {
+  position: relative;
+
+  aspect-ratio: 4 / 5;
+
+  margin-right: -3vw;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+.right canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+figcaption {
+  position: absolute;
+
+  left: 22px;
+  bottom: 22px;
+
+  padding: 16px 20px;
+
+  background: rgba(15, 14, 13, 0.6);
+
+  border: 1px solid var(--ln);
+  border-radius: 14px;
+
+  font:
+    400 26px
+    "Cormorant Garamond",
+    serif;
+}
+
+figcaption small {
+  display: block;
+
+  color: var(--mut);
+
+  font:
+    300 11px
+    Manrope,
+    sans-serif;
+}
+
+
+/* =========================================================
+   CABEÇALHOS DE SEÇÃO
+========================================================= */
+
+.head {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 4vw;
+
+  margin-bottom: 7vh;
+}
+
+.head .side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 18px;
+}
+
+.ctx {
+  max-width: 26em;
+
+  margin-top: 18px;
+
+  color: var(--mut);
+
+  font-size: 14px;
+}
+
+.head .ctx {
+  margin: 0;
+}
+
+
+/* =========================================================
+   GRID DE IMÓVEIS
+========================================================= */
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(12, 1fr);
+
+  grid-template-rows:
+    repeat(
+      2,
+      minmax(260px, 24vw)
+    );
+
+  gap: 20px;
+}
+
+.im {
+  position: relative;
+
+  grid-column: 9 / 13;
+
+  overflow: hidden;
+
+  background: var(--gr);
+
+  border-radius: 22px;
+}
+
+.im.a {
+  grid-column: 1 / 9;
+  grid-row: 1 / 3;
+}
+
+.im canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transition: transform 1.4s;
+}
+
+.im:hover canvas {
+  transform: scale(1.04);
+}
+
+.info {
+  position: absolute;
+  inset: auto 0 0;
+
+  padding: 70px 24px 22px;
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(15, 14, 13, 0.88),
+      transparent
+    );
+}
+
+.info h3 {
+  font:
+    400 clamp(24px, 2.4vw, 38px) / 1.1
+    "Cormorant Garamond",
+    serif;
+}
+
+.info p {
+  color: var(--mut);
+
+  font-size: 13px;
+}
+
+.st {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: var(--ac);
+
+  font-size: 11px;
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.spec {
+  max-height: 0;
+
+  margin-top: 2px;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition:
+    max-height 0.5s,
+    opacity 0.5s;
+}
+
+.im:hover .spec,
+.im:focus-within .spec {
+  max-height: 30px;
+  opacity: 1;
+}
+
+.row {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 12px;
+
+  font-size: 14px;
+}
+
+.row a {
+  padding-bottom: 2px;
+
+  color: var(--of);
+
+  border-bottom: 1px solid var(--ac);
+
+  text-decoration: none;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   FILTRO DE IMÓVEIS
+========================================================= */
+
+.flt {
+  display: flex;
+
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px 0 30px;
+}
+
+.seg {
+  display: flex;
+
+  padding: 4px;
+
+  border: 1px solid var(--ln);
+  border-radius: 99px;
+}
+
+.seg button {
+  padding: 9px 20px;
+
+  background: none;
+
+  border: 0;
+  border-radius: 99px;
+
+  color: var(--mut);
+
+  cursor: pointer;
+
+  font: inherit;
+  font-size: 13px;
+
+  transition: 0.3s;
+}
+
+.seg .on {
+  background: var(--of);
+
+  color: var(--bg);
+}
+
+.flt select {
+  padding: 12px 20px;
+
+  background: var(--gr);
+
+  border: 1px solid var(--ln);
+  border-radius: 99px;
+
+  color: var(--of);
+
+  font: inherit;
+  font-size: 13px;
+}
+
+.go {
+  background: var(--ac);
+  border-color: var(--ac);
+
+  cursor: pointer;
+}
+
+.cnt {
+  margin-bottom: 6px;
+
+  color: var(--mut);
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   LISTA DE IMÓVEIS
+========================================================= */
+
+.list {
+  list-style: none;
+
+  padding: 0;
+}
+
+.list li {
+  display: grid;
+
+  grid-template-columns:
+    130px
+    1.2fr
+    1.4fr
+    auto
+    auto;
+
+  gap: 24px;
+
+  align-items: center;
+
+  padding: 18px 0;
+
+  border-top: 1px solid var(--ln);
+}
+
+.list canvas {
+  width: 130px;
+  height: 92px;
+
+  border-radius: 12px;
+}
+
+.list h3 {
+  font:
+    400 28px / 1.1
+    "Cormorant Garamond",
+    serif;
+}
+
+.list p {
+  color: var(--mut);
+
+  font-size: 13px;
+}
+
+.list .st {
+  margin: 0;
+}
+
+.list b {
+  font-weight: 400;
+}
+
+.list a,
+.svc a {
+  justify-self: start;
+
+  padding-bottom: 2px;
+
+  color: var(--of);
+
+  border-bottom: 1px solid var(--ac);
+
+  text-decoration: none;
+
+  font-size: 12px;
+}
+
+.empty {
+  padding: 40px 0;
+
+  color: var(--mut);
+}
+
+.list li.empty {
+  display: block;
+}
+
+
+/* =========================================================
+   SERVIÇOS
+========================================================= */
+
+.svc-wrap {
+  display: grid;
+
+  grid-template-columns: 1.3fr 0.9fr;
+
+  gap: 6vw;
+
+  align-items: start;
+
+  margin-top: 5vh;
+}
+
+.svc {
+  list-style: none;
+
+  padding: 0;
+}
+
+.svc li {
+  display: grid;
+
+  grid-template-columns: 1fr auto;
+
+  gap: 6px 24px;
+
+  align-items: center;
+
+  padding: 30px 0;
+
+  border-top: 1px solid var(--ln);
+
+  opacity: 0.4;
+
+  transition: opacity 0.4s;
+}
+
+.svc li.on {
+  opacity: 1;
+}
+
+.svc h3 {
+  font:
+    300 clamp(40px, 5.4vw, 84px) / 1
+    "Cormorant Garamond",
+    serif;
+}
+
+.svc p {
+  grid-column: 1;
+
+  max-width: 30em;
+
+  color: var(--mut);
+
+  font-size: 14px;
+}
+
+.svc i {
+  grid-row: 1;
+  grid-column: 2;
+
+  width: 12px;
+  height: 12px;
+
+  border: 1.5px solid var(--ac);
+  border-radius: 50%;
+
+  transition: 0.4s;
+}
+
+.svc li.on i {
+  background: var(--ac);
+}
+
+.svc a {
+  grid-column: 1;
+
+  margin-top: 10px;
+}
+
+.prev {
+  position: sticky;
+  top: 110px;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+.prev canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   GALERIA / STRIP
+========================================================= */
+
+.strip {
+  display: flex;
+
+  gap: 20px;
+
+  padding-bottom: 22px;
+
+  overflow-x: auto;
+
+  scroll-snap-type: x mandatory;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--ac) transparent;
+}
+
+.f {
+  flex: 0 0 clamp(260px, 34vw, 520px);
+
+  scroll-snap-align: start;
+}
+
+.f.w {
+  flex-basis: clamp(320px, 62vw, 960px);
+}
+
+.f canvas {
+  display: block;
+
+  width: 100%;
+
+  aspect-ratio: 3 / 4;
+
+  border-radius: 22px;
+}
+
+.f.w canvas {
+  aspect-ratio: 16 / 10;
+}
+
+.f figcaption {
+  position: static;
+
+  padding-top: 14px;
+
+  background: none;
+
+  border: 0;
+
+  font:
+    400 26px
+    "Cormorant Garamond",
+    serif;
+}
+
+.f small {
+  display: block;
+
+  color: var(--mut);
+
+  font:
+    300 12px
+    Manrope,
+    sans-serif;
+}
+
+
+/* =========================================================
+   PARA PROPRIETÁRIOS
+========================================================= */
+
+.own {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 6vw;
+
+  align-items: end;
+
+  padding: 10vh 6vw;
+
+  border-top: 1px solid var(--ln);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(226, 70, 31, 0.1),
+      transparent 70%
+    );
+}
+
+.own h2 {
+  max-width: 10em;
+
+  font-size: clamp(38px, 5vw, 76px);
+}
+
+.own .ctx {
+  max-width: 28em;
+
+  margin: 0 0 28px;
+
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   PROCESSO
+========================================================= */
+
+.steps {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 28px;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.steps li {
+  padding-top: 26px;
+
+  border-top: 1px solid var(--ln);
+}
+
+.steps b {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: var(--ac);
+
+  font:
+    300 clamp(48px, 5vw, 76px) / 1
+    "Cormorant Garamond",
+    serif;
+}
+
+.steps h3 {
+  margin-bottom: 10px;
+
+  font:
+    400 26px / 1.15
+    "Cormorant Garamond",
+    serif;
+}
+
+.steps p {
+  color: var(--mut);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   ÁREAS DE ATUAÇÃO
+========================================================= */
+
+.areas {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 6vw;
+
+  align-items: center;
+}
+
+.loc {
+  list-style: none;
+
+  margin-top: 34px;
+
+  padding: 0;
+}
+
+.loc li {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 14px 0;
+
+  border-top: 1px solid var(--ln);
+
+  font:
+    300 clamp(30px, 3.6vw, 54px) / 1.1
+    "Cormorant Garamond",
+    serif;
+}
+
+.loc li::before {
+  content: "";
+
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  background: var(--ac);
+
+  border-radius: 50%;
+}
+
+.loc small {
+  color: var(--mut);
+
+  font:
+    300 12px
+    Manrope,
+    sans-serif;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.aimg {
+  aspect-ratio: 5 / 4;
+
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+.aimg canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   CONFIANÇA
+========================================================= */
+
+.trust {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 6vw;
+}
+
+.pil {
+  list-style: none;
+
+  padding: 0;
+}
+
+.pil li {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 24px;
+
+  align-items: baseline;
+
+  padding: 24px 0;
+
+  border-top: 1px solid var(--ln);
+}
+
+.pil h3 {
+  font:
+    400 clamp(24px, 2.6vw, 36px) / 1.1
+    "Cormorant Garamond",
+    serif;
+}
+
+.pil p {
+  color: var(--mut);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.ctas {
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  min-height: 90vh;
+
+  overflow: hidden;
+
+  border-top: 1px solid var(--ln);
+}
+
+.ctas canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transition: transform 1.4s;
+}
+
+.ctas .shade {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(15, 14, 13, 0.85),
+      rgba(15, 14, 13, 0.1) 65%
+    );
+}
+
+.ctas .in {
+  position: relative;
+
+  padding: 0 6vw 12vh;
+}
+
+.ctas h2 {
+  max-width: 11em;
+
+  margin-bottom: 16px;
+
+  font-size: clamp(40px, 6vw, 92px);
+}
+
+.ctas .in .ctx {
+  margin: 0 0 28px;
+
+  color: var(--of);
+
+  opacity: 0.8;
+}
+
+.ctas .in .pill {
+  margin-left: 10px;
+}
+
+
+/* =========================================================
+   CONTATO
+========================================================= */
+
+.contact {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 4vw;
+
+  padding: 9vh 6vw;
+
+  border-top: 1px solid var(--ln);
+}
+
+.contact small {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: var(--ac);
+
+  font-size: 11px;
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+.contact a,
+.contact span {
+  color: var(--of);
+
+  text-decoration: none;
+
+  font:
+    300 21px / 1.3
+    "Cormorant Garamond",
+    serif;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 7vh 6vw 4vh;
+
+  background: #141312;
+
+  border-top: 1px solid var(--ln);
+
+  font-size: 13px;
+}
+
+footer .fb {
+  max-width: 26em;
+}
+
+footer .fb p {
+  margin-top: 16px;
+
+  color: var(--mut);
+}
+
+footer nav {
+  display: flex;
+
+  flex-direction: row;
+
+  flex-wrap: wrap;
+
+  gap: 28px;
+
+  max-width: 34em;
+}
+
+footer a {
+  color: var(--mut);
+
+  text-decoration: none;
+
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: var(--of);
+}
+
+footer .logo {
+  color: var(--of);
+}
+
+.cp {
+  width: 100%;
+
+  padding-top: 20px;
+
+  color: var(--mut);
+
+  border-top: 1px solid var(--ln);
+
+  font-size: 11px;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   REVEAL / ANIMAÇÕES
+========================================================= */
+
+.js .rv {
+  opacity: 0;
+
+  transform: translateY(26px);
+
+  transition:
+    opacity 0.9s,
+    transform 0.9s;
+}
+
+.js .rv.in {
+  opacity: 1;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+html.intro-lock,
+body.intro-lock {
+  overflow: hidden;
+}
+
+.site-intro {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  overflow: hidden;
+
+  pointer-events: all;
+
+  background: transparent;
+}
+
+
+/* =========================================================
+   CORTINAS
+========================================================= */
+
+.intro-curtain {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 50.5%;
+
+  background: #0b0a09;
+
+  will-change: transform;
+
+  transform: translateX(0);
+}
+
+.intro-curtain-left {
+  left: 0;
+}
+
+.intro-curtain-right {
+  right: 0;
+}
+
+
+/* =========================================================
+   DETALHE NAS CORTINAS
+========================================================= */
+
+.intro-curtain-left::after,
+.intro-curtain-right::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 1px;
+
+  opacity: 0.18;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(--ac),
+      transparent
+    );
+}
+
+.intro-curtain-left::after {
+  right: 0;
+}
+
+.intro-curtain-right::after {
+  left: 0;
+}
+
+
+/* =========================================================
+   MARCA DA INTRO
+========================================================= */
+
+.intro-brand {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  color: var(--of);
+
+  will-change: opacity, transform;
+
+  transition:
+    opacity 0.65s cubic-bezier(.22, 1, .36, 1),
+    transform 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.intro-brand-name {
+  font:
+    300 clamp(42px, 5vw, 72px) / 0.9
+    "Cormorant Garamond",
+    serif;
+
+  letter-spacing: -0.02em;
+}
+
+.intro-brand-type {
+  margin-top: 8px;
+
+  padding-left: 0.42em;
+
+  color: var(--mut);
+
+  font:
+    400 10px
+    Manrope,
+    sans-serif;
+
+  letter-spacing: 0.42em;
+
+  text-transform: uppercase;
+}
+
+.intro-rule {
+  width: 0;
+  height: 1px;
+
+  margin-top: 28px;
+
+  background: var(--ac);
+
+  transition:
+    width 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+.intro-location {
+  margin-top: 14px;
+
+  color: rgba(239, 234, 226, 0.42);
+
+  font:
+    300 9px
+    Manrope,
+    sans-serif;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ESTADO INICIAL DA INTRO
+========================================================= */
+
+.site-intro .intro-brand {
+  opacity: 0;
+
+  transform: translateY(12px);
+}
+
+.site-intro .intro-rule {
+  width: 0;
+}
+
+
+/* =========================================================
+   COMEÇO DA ANIMAÇÃO
+========================================================= */
+
+.site-intro.play .intro-brand {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.site-intro.play .intro-rule {
+  width: 72px;
+}
+
+
+/* =========================================================
+   ABERTURA
+========================================================= */
+
+.site-intro.open .intro-curtain-left {
+  transform: translateX(-101%);
+
+  transition:
+    transform 1.2s cubic-bezier(.77, 0, .18, 1);
+}
+
+.site-intro.open .intro-curtain-right {
+  transform: translateX(101%);
+
+  transition:
+    transform 1.2s cubic-bezier(.77, 0, .18, 1);
+}
+
+.site-intro.open .intro-brand {
+  opacity: 0;
+
+  transform:
+    translateY(-16px)
+    scale(0.97);
+}
+
+.site-intro.done {
+  pointer-events: none;
+}
+
+.site-intro.done .intro-brand {
+  opacity: 0;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 820px) {
+
+  /* HEADER */
+
+  .nav {
+    gap: 12px;
+  }
+
+  .nav > .pill {
+    margin-left: auto;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .nav nav {
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0;
+
+    max-height: 0;
+
+    padding: 0 5vw;
+
+    overflow: hidden;
+
+    background: #141312;
+
+    border-bottom: 1px solid var(--ln);
+
+    transition: max-height 0.4s;
+  }
+
+  .nav.open nav {
+    max-height: 420px;
+  }
+
+  .nav nav a {
+    padding: 16px 0;
+
+    border-top: 1px solid var(--ln);
+
+    font-size: 15px;
+  }
+
+  .nav.open {
+    background: #141312;
+  }
+
+
+  /* HERO */
+
+  #hero {
+    height: 280vh;
+  }
+
+  .scroll {
+    display: none;
+  }
+
+
+  /* SOBRE */
+
+  #sobre {
+    grid-template-columns: 1fr;
+
+    padding: 12vh 6vw;
+  }
+
+  .right {
+    margin: 0;
+
+    aspect-ratio: 4 / 5;
+  }
+
+  .micro {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* SEÇÕES */
+
+  .sec {
+    padding: 9vh 6vw;
+  }
+
+  .head {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .head .side {
+    align-items: flex-start;
+  }
+
+
+  /* GRID */
+
+  .grid {
+    grid-template-columns: 1fr;
+
+    grid-template-rows: none;
+
+    grid-auto-rows: 78vw;
+  }
+
+  .im,
+  .im.a {
+    grid-column: 1;
+
+    grid-row: auto;
+  }
+
+  .im.a {
+    height: 100vw;
+  }
+
+
+  /* SERVIÇOS */
+
+  .svc-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .prev {
+    display: none;
+  }
+
+  .svc li {
+    opacity: 1;
+  }
+
+
+  /* PROPRIETÁRIOS */
+
+  .own {
+    grid-template-columns: 1fr;
+
+    align-items: start;
+
+    gap: 24px;
+  }
+
+
+  /* PROCESSO */
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* ÁREAS */
+
+  .areas {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* CONFIANÇA */
+
+  .trust {
+    grid-template-columns: 1fr;
+  }
+
+  .pil li {
+    grid-template-columns: 1fr;
+
+    gap: 6px;
+  }
+
+
+  /* LISTA */
+
+  .list li {
+    grid-template-columns: 90px 1fr;
+
+    gap: 6px 16px;
+  }
+
+  .list li > *:nth-child(n + 3) {
+    grid-column: 2;
+  }
+
+  .list canvas {
+    width: 90px;
+    height: 70px;
+
+    grid-row: 1 / 3;
+  }
+
+
+  /* CTA */
+
+  .ctas .in .pill {
+    margin: 12px 0 0;
+  }
+
+
+  /* CONTATO */
+
+  .contact {
+    grid-template-columns: 1fr 1fr;
+  }
+
+
+  /* FOOTER */
+
+  footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  footer nav {
+    flex-direction: row;
+  }
+
+
+  /* BOTÕES */
+
+  .btns .cta {
+    flex: 1 1 auto;
+
+    text-align: center;
+  }
+
+
+  /* INTRO */
+
+  .intro-brand-name {
+    font-size: clamp(42px, 12vw, 64px);
+  }
+
+  .intro-brand-type {
+    font-size: 9px;
+
+    letter-spacing: 0.34em;
+  }
+
+  .intro-rule {
+    margin-top: 24px;
+  }
+
+  .intro-location {
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE PEQUENO
+========================================================= */
+
+@media (max-width: 520px) {
+
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .ctas .in .cta.lg {
+    display: block;
+
+    text-align: center;
+  }
+
+  .ctas .in .pill {
+    display: inline-block;
+  }
+
+  .contact a,
+  .contact span {
+    font-size: 20px;
+  }
+}
+
+
+/* =========================================================
+   REDUÇÃO DE MOVIMENTO
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .pill,
+  .cta,
+  .svc li,
+  .im canvas,
+  .nav,
+  .js .rv {
+    transition: none !important;
+  }
+
+  .js .rv {
+    opacity: 1;
+
+    transform: none;
+  }
+
+  .intro-curtain-left,
+  .intro-curtain-right,
+  .intro-brand,
+  .intro-rule {
+    transition: none !important;
+  }
+}
